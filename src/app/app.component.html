@@ -1,20 +1,144 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+<div id="id01" class="modal">
+  <form class="modal-content animate" action="">
+    <div class="container">
+      <label for="uname"><b>Task Title</b></label>
+      <input type="text" #todo class="form-control" placeholder="Enter Task" name="todo" ngModel required>
+        <br>
+      <label for="psw"><b>Task Description</b></label>
+        <textarea #todoDes name="todoDes" placeholder="Enter Description" cols="40" rows="5" ngModel required></textarea>
+        <br>
+      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value)">Submit</button>
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn button">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+					<div class="container">
+
+						<!-- Logo -->
+							<h1 id="logo">Project Management</h1>
+							<p>A responsive and adaptiive timeline</p>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li>
+										<a href="#" class="icon fa-bar-chart-o"><span>Users</span></a>
+									</li>
+								</ul>
+							</nav>
+
+					</div>
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+
+							<!-- Sidebar -->
+								<div id="sidebar" class="col-4 col-12-medium">
+
+									<!-- Excerpts -->
+										<section>
+                                            <div class="container">
+                                             <form>
+                                              <div class="form-group">
+                                                   <div class="input-group-prepend">
+                                                       <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
+                                                   </div>
+                                                      <div class="data">
+                                                          <ul class="list-instyled">
+                                                              <li *ngFor="let todo of todoArray"><strong>{{todo}}:</strong>
+                                                                  <br>
+                                                                  {{todoDes.value}}
+                                                                  <br>
+                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                                              </li>
+                                                              <li><strong>Fix user authentication:</strong>
+                                                                  <br>
+                                                                  Example description about putting in user authentication...
+                                                                  <br>
+                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                                              </li>
+                                                              <li><strong>Adding express feature:</strong>
+                                                                  <br>
+                                                                  Adding new express feature that does xyz...
+                                                                  <br>
+                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                                              </li>
+                                                              <li><strong>triangulate bermuda:</strong>
+                                                                  <br>
+                                                                  Example description about doing some programming.
+                                                                  <br>
+                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                                              </li>
+                                                          </ul>
+                                                      </div>
+                                              </div>
+                                             </form>
+                                            </div>
+										</section>
+
+								</div>
+
+							<!-- Content -->
+								<div id="content" class="col-8 col-12-medium imp-medium">
+
+									<!-- Post -->
+										<article class="box post">
+											<header>
+												<h2 align = "center">Timeline</h2>
+											</header>
+											<br>
+                                            <div class="timeline">
+                                              <div class="containerT leftT">
+                                                <div class="contentT">
+                                                  <h2>3/1/2019</h2>
+                                                  <p>Fix user authentication</p>
+                                                </div>
+                                              </div>
+                                              <div class="containerT rightT">
+                                                <div class="contentT">
+                                                  <h2>3/2/2019</h2>
+                                                  <p>Adding express feature</p>
+                                                </div>
+                                              </div>
+                                              <div class="containerT leftT">
+                                                <div class="contentT">
+                                                  <h2>3/10/2019</h2>
+                                                  <p>triangulate bermuda</p>
+                                                </div>
+                                              </div>
+                                              <div class="containerT rightT">
+                                                <div class="contentT">
+                                                  <h2>3/30/2019</h2>
+                                                  <p>Publish site go-live</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            
+										</article>
+
+								</div>
+
+						</div>
+					</div>
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
