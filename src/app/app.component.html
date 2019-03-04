@@ -4,14 +4,24 @@
 <div id="id01" class="modal">
   <form class="modal-content animate" action="">
     <div class="container">
-      <label for="uname"><b>Task Title</b></label>
+      <label><b>Task Title</b></label>
       <input type="text" #todo class="form-control" placeholder="Enter Task" name="todo" ngModel required>
         <br>
-      <label for="psw"><b>Task Description</b></label>
+      <label><b>Task Description</b></label>
         <textarea #todoDes name="todoDes" placeholder="Enter Description" cols="40" rows="5" ngModel required></textarea>
-        <br>
-      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value)">Submit</button>
+        <br><br>
+        <app-upload></app-upload>
+        <br><br>
+        <label><b>Task Category</b></label>
+        <select id="selectOption" class= "styled-select slate" (change)="saveChange($event.target.value)">
+          <option value="Issue">Issue</option>
+          <option value="New Feature">New Feature</option>
+          <option value="Feature Fix">Feature Fix</option>
+        </select>
+        <br><br>
+      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value, selectedType)">Submit</button>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn button">Cancel</button>
+      <br><br>
     </div>
   </form>
 </div>
@@ -24,7 +34,7 @@
 
 						<!-- Logo -->
 							<h1 id="logo">Project Management</h1>
-							<p>A responsive and adaptiive timeline</p>
+							<p>A responsive and adaptive timeline</p>
 
 						<!-- Nav -->
 							<nav id="nav">
@@ -54,29 +64,64 @@
                                                    <div class="input-group-prepend">
                                                        <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
                                                    </div>
+                                                  
+                                                  
+                             <!-- new accordian settings -->
+                                                  <br>
+                            <button class="accordion yl">Issues: <i class="far fa-caret-square-down"></i></button>
+                            <div class="panel">
+                              <div class="data">
+                               <ul class="list-instyled">
+                                   <li><strong>Fix user authentication:</strong>
+                                      <br>
+                                      Example description about putting in user authentication...
+                                      <br>
+                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                    </li>
+                                   <li *ngFor="let todo of todoArrayIssues"><strong>{{todo}}:</strong>
+                                      <br>
+                                      {{todoDesIssues.value}}
+                                      <br>
+                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                  </li>
+                                </ul>
+                               </div>
+                            </div>
+                                                  <br><br>
+                            <button class="accordion rd">New Features: <i class="far fa-caret-square-down"></i></button>
+                            <div class="panel">
+                              <div class="data">
+                               <ul class="list-instyled">
+                                   <li><strong>Adding express feature:</strong>
+                                      <br>
+                                      Adding new express feature that does xyz...
+                                      <br>
+                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                  </li>
+                                </ul>
+                               </div>
+                            </div>
+                                                  <br><br>
+                            <button class="accordion bl">Feature fix: <i class="far fa-caret-square-down"></i></button>
+                            <div class="panel">
+                              <div class="data">
+                               <ul class="list-instyled">
+                                   <li><strong>Fix user authentication:</strong>
+                                      <br>
+                                      Example description about putting in user authentication...
+                                      <br>
+                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+                               </div>
+                            </div>
+                                                  
+                                                  
                                                       <div class="data">
                                                           <ul class="list-instyled">
                                                               <li *ngFor="let todo of todoArray"><strong>{{todo}}:</strong>
                                                                   <br>
                                                                   {{todoDes.value}}
-                                                                  <br>
-                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                                              </li>
-                                                              <li><strong>Fix user authentication:</strong>
-                                                                  <br>
-                                                                  Example description about putting in user authentication...
-                                                                  <br>
-                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                                              </li>
-                                                              <li><strong>Adding express feature:</strong>
-                                                                  <br>
-                                                                  Adding new express feature that does xyz...
-                                                                  <br>
-                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                                              </li>
-                                                              <li><strong>triangulate bermuda:</strong>
-                                                                  <br>
-                                                                  Example description about doing some programming.
                                                                   <br>
                                                                   <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
                                                               </li>
@@ -88,16 +133,16 @@
 										</section>
 
 								</div>
-
+                            
 							<!-- Content -->
 								<div id="content" class="col-8 col-12-medium imp-medium">
 
 									<!-- Post -->
 										<article class="box post">
 											<header>
-												<h2 align = "center">Timeline</h2>
+												<h2 align = "center"> </h2>
 											</header>
-											<br>
+											<br><br>
                                             <div class="timeline">
                                               <div class="containerT leftT">
                                                 <div class="contentT">
@@ -142,3 +187,4 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
