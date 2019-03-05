@@ -1,0 +1,90 @@
+
+<div id="container">
+  <div><p>kkkkkkkk</p></div>
+  <div><p>pppppppp</p></div>
+  <div></div>
+  <div></div>
+</div>
+
+
+<div class="container1">
+  <div class="form-group">
+       <div  id="sidebar" class="col-4 col-12-medium">
+           <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
+       </div>
+
+      
+     <!-- new accordian settings -->
+    <br>
+<div id="container">
+    <div>
+    <button class="accordion yl">Issues: </button>
+        <div class="panel">
+          <div class="data">
+           <ul class="list-instyled">
+               <li><strong>Fix user authentication:</strong>
+                  <br>
+                  Example description about putting in user authentication...
+                  <br>
+                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                </li>
+               <li *ngFor="let todo of todoArrayIssues"><strong>{{todo}}:</strong>
+                  <br>
+                   <div *ngFor="let todoDes of todoDesIssues">
+                  {{todoDes.value}}
+                    </div>
+                  <br>
+                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+              </li>
+            </ul>
+           </div>
+        </div>
+    </div>
+    <br>
+      <div>
+        <button class="accordion rd">New Features: </button>
+        <div class="panel">
+          <div class="data">
+           <ul class="list-instyled">
+               <li><strong>Adding express feature:</strong>
+                  <br>
+                  Adding new express feature that does xyz...
+                  <br>
+                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+              </li>
+            </ul>
+           </div>
+        </div>
+    </div>
+      <br>
+      
+      <div>
+        <button class="accordion bl">Feature fix: </button>
+        <div class="panel">
+          <div class="data">
+           <ul class="list-instyled">
+               <li><strong>Fix user authentication:</strong>
+                  <br>
+                  Example description about putting in user authentication...
+                  <br>
+                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                </li>
+            </ul>
+           </div>
+        </div>
+    </div>
+
+
+          <div class="data">
+              <ul class="list-instyled">
+                  <li *ngFor="let todo of todoArray"><strong>{{todo}}:</strong>
+                      <br>
+                      {{todoDes.value}}
+                      <br>
+                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                  </li>
+              </ul>
+          </div>
+      </div>
+</div>
+</div>
