@@ -1,90 +1,99 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<div id="container">
-  <div><p>kkkkkkkk</p></div>
-  <div><p>pppppppp</p></div>
-  <div></div>
-  <div></div>
+<div id="id01" class="modal">
+  <form class="modal-content animate" action="">
+    <div class="container">
+      <label><b>Task Title</b></label>
+      <input type="text" #todo class="form-control" placeholder="Enter Task" name="todo" ngModel required>
+        <br>
+      <label><b>Task Description</b></label>
+        <textarea #todoDes name="todoDes" placeholder="Enter Description" cols="40" rows="5" ngModel required></textarea>
+        <br>
+        <app-upload></app-upload>
+        <br><br>
+        <label><b>Task Category</b></label>
+        <select id="selectOption" class= "styled-select slate" [ngModel]="selectedDeviceObj" (ngModelChange)="onChangeObj($event)" name="sel3">
+          <option [ngValue]="i" *ngFor="let i of deviceObjects">{{i.name}}</option>
+        </select>
+        <br><br>
+      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value)">Submit</button>
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn button">Cancel</button>
+      <br><br>
+    </div>
+  </form>
 </div>
-
 
 <div class="container1">
   <div class="form-group">
        <div  id="sidebar" class="col-4 col-12-medium">
            <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
        </div>
-
-      
-     <!-- new accordian settings -->
-    <br>
-<div id="container">
-    <div>
-    <button class="accordion yl">Issues: </button>
-        <div class="panel">
-          <div class="data">
-           <ul class="list-instyled">
-               <li><strong>Fix user authentication:</strong>
-                  <br>
-                  Example description about putting in user authentication...
-                  <br>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                </li>
-               <li *ngFor="let todo of todoArrayIssues"><strong>{{todo}}:</strong>
-                  <br>
-                   <div *ngFor="let todoDes of todoDesIssues">
-                  {{todoDes.value}}
-                    </div>
-                  <br>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-              </li>
-            </ul>
-           </div>
-        </div>
     </div>
-    <br>
-      <div>
-        <button class="accordion rd">New Features: </button>
-        <div class="panel">
+</div>
+   
+<div class="centerM">
           <div class="data">
-           <ul class="list-instyled">
-               <li><strong>Adding express feature:</strong>
-                  <br>
-                  Adding new express feature that does xyz...
-                  <br>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-              </li>
-            </ul>
-           </div>
-        </div>
-    </div>
-      <br>
-      
-      <div>
-        <button class="accordion bl">Feature fix: </button>
-        <div class="panel">
-          <div class="data">
-           <ul class="list-instyled">
-               <li><strong>Fix user authentication:</strong>
-                  <br>
-                  Example description about putting in user authentication...
-                  <br>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                </li>
-            </ul>
-           </div>
-        </div>
-    </div>
-
-
-          <div class="data">
-              <ul class="list-instyled">
-                  <li *ngFor="let todo of todoArray"><strong>{{todo}}:</strong>
+              <ul id="id01" class="w3-ul">
+                  <li class="w3-hover-green" *ngFor="let todoCat of todoCatArray"><strong>{{todoCat.name}}</strong>   
+                          <div *ngFor="let todo of todoArray">
+                            {{todo}}:
+                          </div>
+                          <div *ngFor="let todoDes of todoDesArray">
+                            {{todoDes}}
+                          </div>
                       <br>
-                      {{todoDes.value}}
+                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                  </li>
+                  <li class="w3-hover-blue"><strong>Issue</strong>
+                          <div>
+                            Bug1234:
+                          </div>
+                          <div>
+                            this is a task description about Taskname on of in the bug number 1321.
+                          </div>
                       <br>
-                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                  </li>
+                  <li class="w3-hover-green"><strong>New Feature</strong>
+                          <div>
+                            adding guest users:
+                          </div>
+                          <div>
+                            this is a task description about Taskname on of in the bug number 1321.
+                          </div>
+                      <br>
+                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
                   </li>
               </ul>
           </div>
-      </div>
 </div>
-</div>
+
+<section>
+    <div class="container">
+        <div  id="mySidenav2" class="sidenav2">
+            <div>
+                <h5 class="titleSideNav">{{selectedTitle.name}} TaskName</h5>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
+            </div>
+            <hr>
+            <div>
+                    <label><b><i class="fas fa-calendar-day"></i> Deadline: </b> 3/6/2019</label>
+                    <label><b><i class="far fa-clock"></i> Task Created: </b> 3/5/2019</label>
+                <br><br>
+                    <label><b><i class="fas fa-user"></i> Assigned To: </b> Freddy</label>
+                <br><br>
+                    <label><b><i class="fas fa-align-left"></i> Task Description: </b></label>
+                      <div>
+                        {{selectedTitleDes.name}}
+                        <p>This is an exmaple description for the task named.</p>
+                      </div>
+                 <br>
+                    <label>Upload file <i class="fas fa-paperclip"></i></label>
+                 <br><br>
+                    <label><b><i class="far fa-comments"></i> Add a Comment</b></label>
+                    <textarea placeholder="Enter a Comment" cols="40" rows="4" ngModel required></textarea>
+                <br>
+            </div>
+        </div>
+    </div>
+</section>

@@ -5,30 +5,35 @@ import { Injectable } from '@angular/core';
 })
 export class TaskViewService {
 
+  todoArray=["working"]
+  todoDesArray=[]
+  todoCatArray=[]
+  todoDateArray=[]
+  
   constructor() { }
   
-      acc() {
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-        var modal = document.getElementById('id01');
-
-        for (i = 0; i < acc.length; i++) {
-          acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-              panel.style.display = "none";
-            } else {
-              panel.style.display = "block";
-            }
-          });
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
-    
+  setValueTodoArray(array){
+    this.todoArray = array;
+  }
+   setValueTodoDesArray(array){
+    this.todoDesArray = array;
+  }
+   setValueTodoCatArray(array){
+    this.todoCatArray = array;
+  }
+   setValueTodoDateArray(array){
+    this.todoDateArray = array;
+  }
+  getValueTodoArray(){
+    return this.todoArray;
+  }
+  getValueTodoDesArray(){
+    return this.todoDesArray;
+  }
+   getValueTodoCatArray(){
+    return this.todoCatArray;
+  }
+   getValueTodoDateArray(){
+    return this.todoDateArray;
+  }
 }
