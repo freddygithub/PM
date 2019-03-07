@@ -5,35 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class TaskViewService {
 
-  todoArray=["working"]
-  todoDesArray=[]
-  todoCatArray=[]
-  todoDateArray=[]
+   deviceObjects = [{name: 'Issue'}, {name: 'New Feature'}, {name: 'Feature Fix'}];
+   selectedDeviceObj = this.deviceObjects[1];
+   
+   todoArray=[{name: "FixThatOneBug", des: "the text on the description of the tasks are to small and make the main page look weird without a lot of text.", cat: this.selectedDeviceObj, date: "2019-01-07"},
+   {name: "Fixing bug123", des: "the text on the description of the tasks are to small and make the main page look weird without a lot of text.", cat: this.deviceObjects[2], date: "2019-10-07"},
+   {name: "fixingFeature123", des: "the text on the description of the tasks are to small and make the main page look weird without a lot of text.", cat: this.deviceObjects[2], date: "2019-12-07"}]
   
   constructor() { }
   
   setValueTodoArray(array){
     this.todoArray = array;
   }
-   setValueTodoDesArray(array){
-    this.todoDesArray = array;
-  }
-   setValueTodoCatArray(array){
-    this.todoCatArray = array;
-  }
-   setValueTodoDateArray(array){
-    this.todoDateArray = array;
-  }
   getValueTodoArray(){
     return this.todoArray;
-  }
-  getValueTodoDesArray(){
-    return this.todoDesArray;
-  }
-   getValueTodoCatArray(){
-    return this.todoCatArray;
-  }
-   getValueTodoDateArray(){
-    return this.todoDateArray;
   }
 }

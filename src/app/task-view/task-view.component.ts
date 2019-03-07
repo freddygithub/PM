@@ -9,42 +9,49 @@ import { TaskViewService } from './task-view.service';
 })
 export class TaskViewComponent implements OnInit {
 
-   selectedTitle = "Task Name";
-   selectedTitleDes = "This is the task description";
-   
-   todoArray=[]
-   todoDesArray=[]
-   todoCatArray=[]
+   selectedTitle = "";
+   selectedDes = "";
+   selectedCat = "";
+   selectedDate = "";
    
    deviceObjects = [{name: 'Issue'}, {name: 'New Feature'}, {name: 'Feature Fix'}];
    selectedDeviceObj = this.deviceObjects[1];
    
+   todoArray=[]
+   
   constructor(private taskviewService: TaskViewService) { }
 
   ngOnInit() {
-  this.todoArray = this.taskviewService.getValueTodoArray()
+  this.todoArray = this.taskviewService.getValueTodoArray();
   }
       
   onChangeObj(newObj) {
     this.selectedDeviceObj = newObj;
+    this.taskviewService.setValueTodoArray(this.todoArray);
   }
    
-   addTodo(value, des){
-        this.todoArray.push(value)
-        this.todoDesArray.push(des)
-        this.todoCatArray.push(this.selectedDeviceObj)
+   selectedButton(value){
+   this.selectedTitle = value.name
+   this.selectedDes = value.des
+   this.selectedCat = value.cat
+   this.selectedDate = value.date
+   }
+   
+   addTodo(value, des, date){
+        this.todoArray.push({
+        name: value,
+        des: des,
+        cat: this.selectedDeviceObj,
+        date: date
+        })
         
         this.taskviewService.setValueTodoArray(this.todoArray)
-        this.taskviewService.setValueTodoDesArray(this.todoDesArray)
-        this.taskviewService.setValueTodoCatArray(this.todoCatArray)
   }
   
   deleteItem(todo){
    for(let i=0 ;i<= this.todoArray.length ;i++){
     if(todo== this.todoArray[i]){
      this.todoArray.splice(i,1)
-     this.todoDesArray.splice(i,1)
-     this.todoCatArray.splice(i,1)
     }
    }
   }

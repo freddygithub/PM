@@ -12,6 +12,7 @@ export class AppService {
     acc() {
         var acc = document.getElementsByClassName("accordion");
         var i;
+        var modal = document.getElementById('id01');
 
         for (i = 0; i < acc.length; i++) {
           acc[i].addEventListener("click", function() {
@@ -24,6 +25,16 @@ export class AppService {
             }
           });
         }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+    
+    cls(){
+    document.getElementById('id01').style.display='none'
     }
 }
 

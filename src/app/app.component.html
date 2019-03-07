@@ -1,180 +1,40 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-<div id="id01" class="modal">
-  <form class="modal-content animate" action="">
-    <div class="container">
-      <label><b>Task Title</b></label>
-      <input type="text" #todo class="form-control" placeholder="Enter Task" name="todo" ngModel required>
-        <br>
-      <label><b>Task Description</b></label>
-        <textarea #todoDes name="todoDes" placeholder="Enter Description" cols="40" rows="5" ngModel required></textarea>
-        <br><br>
-        <app-upload></app-upload>
-        <br><br>
-        <label><b>Task Category</b></label>
-        <select id="selectOption" class= "styled-select slate" (change)="saveChange($event.target.value)">
-          <option value="Issue">Issue</option>
-          <option value="New Feature">New Feature</option>
-          <option value="Feature Fix">Feature Fix</option>
-        </select>
-        <br><br>
-      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value, selectedType)">Submit</button>
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn button">Cancel</button>
-      <br><br>
-    </div>
-  </form>
-</div>
-
 <div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header">
+				<section>
 					<div class="container">
-
-						<!-- Logo -->
-							<h1 id="logo">Project Management</h1>
-							<p>A responsive and adaptive timeline</p>
-
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li>
-										<a href="#" class="icon fa-bar-chart-o"><span>Users</span></a>
-									</li>
-								</ul>
-							</nav>
-
+                          <span style="font-size:35px;cursor:pointer" onclick="openNav()">&#9776;</span>
+                        <div id="mySidenav" class="sidenav">
+                            <div>
+                                <h5 class="titleSideNav">Title</h5>
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            </div>
+                            <hr>
+                          <a (click)="toggleTimeline()"><i class="fas fa-calendar-alt"></i> Timeline</a>
+                            <hr>
+                          <a (click)="toggleTask()"><i class="fas fa-tasks"></i> Tasks</a>
+                            <hr>
+                          <a><i class="fas fa-project-diagram"></i> Projects</a>
+                            <hr>
+                        </div>
 					</div>
 				</section>
-
+    
 			<!-- Main -->
 				<section id="main">
 					<div class="container">
-						<div class="row">
-
-							<!-- Sidebar -->
-								<div id="sidebar" class="col-4 col-12-medium">
-
-									<!-- Excerpts -->
-										<section>
-                                            <div class="container">
-                                             <form>
-                                              <div class="form-group">
-                                                   <div class="input-group-prepend">
-                                                       <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
-                                                   </div>
-                                                  
-                                                  
-                             <!-- new accordian settings -->
-                                                  <br>
-                            <button class="accordion yl">Issues: <i class="far fa-caret-square-down"></i></button>
-                            <div class="panel">
-                              <div class="data">
-                               <ul class="list-instyled">
-                                   <li><strong>Fix user authentication:</strong>
-                                      <br>
-                                      Example description about putting in user authentication...
-                                      <br>
-                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                    </li>
-                                   <li *ngFor="let todo of todoArrayIssues"><strong>{{todo}}:</strong>
-                                      <br>
-                                      {{todoDesIssues.value}}
-                                      <br>
-                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                  </li>
-                                </ul>
-                               </div>
-                            </div>
-                                                  <br><br>
-                            <button class="accordion rd">New Features: <i class="far fa-caret-square-down"></i></button>
-                            <div class="panel">
-                              <div class="data">
-                               <ul class="list-instyled">
-                                   <li><strong>Adding express feature:</strong>
-                                      <br>
-                                      Adding new express feature that does xyz...
-                                      <br>
-                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                  </li>
-                                </ul>
-                               </div>
-                            </div>
-                                                  <br><br>
-                            <button class="accordion bl">Feature fix: <i class="far fa-caret-square-down"></i></button>
-                            <div class="panel">
-                              <div class="data">
-                               <ul class="list-instyled">
-                                   <li><strong>Fix user authentication:</strong>
-                                      <br>
-                                      Example description about putting in user authentication...
-                                      <br>
-                                      <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                    </li>
-                                </ul>
-                               </div>
-                            </div>
-                                                  
-                                                  
-                                                      <div class="data">
-                                                          <ul class="list-instyled">
-                                                              <li *ngFor="let todo of todoArray"><strong>{{todo}}:</strong>
-                                                                  <br>
-                                                                  {{todoDes.value}}
-                                                                  <br>
-                                                                  <i class="fa fa-info-circle" aria-hidden="true"></i><i class="fas fa-plus padd"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                                                              </li>
-                                                          </ul>
-                                                      </div>
-                                              </div>
-                                             </form>
-                                            </div>
-										</section>
-
-								</div>
-                            
-							<!-- Content -->
-								<div id="content" class="col-8 col-12-medium imp-medium">
-
-									<!-- Post -->
-										<article class="box post">
-											<header>
-												<h2 align = "center"> </h2>
-											</header>
-											<br><br>
-                                            <div class="timeline">
-                                              <div class="containerT leftT">
-                                                <div class="contentT">
-                                                  <h2>3/1/2019</h2>
-                                                  <p>Fix user authentication</p>
-                                                </div>
-                                              </div>
-                                              <div class="containerT rightT">
-                                                <div class="contentT">
-                                                  <h2>3/2/2019</h2>
-                                                  <p>Adding express feature</p>
-                                                </div>
-                                              </div>
-                                              <div class="containerT leftT">
-                                                <div class="contentT">
-                                                  <h2>3/10/2019</h2>
-                                                  <p>triangulate bermuda</p>
-                                                </div>
-                                              </div>
-                                              <div class="containerT rightT">
-                                                <div class="contentT">
-                                                  <h2>3/30/2019</h2>
-                                                  <p>Publish site go-live</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            
-										</article>
-
+								<div id="content">
+                                    <ng-container *ngIf="showTimeline">  
+                                        <app-timeline></app-timeline>
+                                    </ng-container>
+                                    <ng-container *ngIf="showTask">  
+                                        <app-task-view></app-task-view>
+                                    </ng-container>
 								</div>
 
-						</div>
 					</div>
 				</section>
 

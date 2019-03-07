@@ -16,7 +16,9 @@
           <option [ngValue]="i" *ngFor="let i of deviceObjects">{{i.name}}</option>
         </select>
         <br><br>
-      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value)">Submit</button>
+        <input #todoDate type="date" name="dateofbirth" id="dateofbirth">
+        <br><br>
+      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value, todoDate.value)">Submit</button>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn button">Cancel</button>
       <br><br>
     </div>
@@ -25,44 +27,23 @@
 
 <div class="container1">
   <div class="form-group">
-       <div  id="sidebar" class="col-4 col-12-medium">
            <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
-       </div>
+           
+           <button class="button srt" onclick="sortList()">Sort <i class="fas fa-sort"></i></button>
     </div>
 </div>
    
 <div class="centerM">
           <div class="data">
-              <ul id="id01" class="w3-ul">
-                  <li class="w3-hover-green" *ngFor="let todoCat of todoCatArray"><strong>{{todoCat.name}}</strong>   
-                          <div *ngFor="let todo of todoArray">
-                            {{todo}}:
-                          </div>
-                          <div *ngFor="let todoDes of todoDesArray">
-                            {{todoDes}}
-                          </div>
+              <ul id="id02" class="w3-ul">
+                  <li class="w3-hover-grey" *ngFor="let todo of todoArray">
+                      <strong id="cat">{{todo.cat.name}}</strong>
                       <br>
-                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                  </li>
-                  <li class="w3-hover-blue"><strong>Issue</strong>
-                          <div>
-                            Bug1234:
-                          </div>
-                          <div>
-                            this is a task description about Taskname on of in the bug number 1321.
-                          </div>
+                      {{todo.name}}: {{todo.date}}
                       <br>
-                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
-                  </li>
-                  <li class="w3-hover-green"><strong>New Feature</strong>
-                          <div>
-                            adding guest users:
-                          </div>
-                          <div>
-                            this is a task description about Taskname on of in the bug number 1321.
-                          </div>
+                      {{todo.des}}
                       <br>
-                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()" (click)="selectedButton(todo)"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
                   </li>
               </ul>
           </div>
@@ -72,26 +53,25 @@
     <div class="container">
         <div  id="mySidenav2" class="sidenav2">
             <div>
-                <h5 class="titleSideNav">{{selectedTitle.name}} TaskName</h5>
+                <h5 class="titleSideNav">{{selectedTitle}}</h5>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
             </div>
             <hr>
             <div>
-                    <label><b><i class="fas fa-calendar-day"></i> Deadline: </b> 3/6/2019</label>
+                    <label><b><i class="fas fa-calendar-day"></i> Category: </b> {{selectedCat.name}}</label>
+                    <label><b><i class="fas fa-calendar-day"></i> Deadline: </b> {{selectedDate}}</label>
                     <label><b><i class="far fa-clock"></i> Task Created: </b> 3/5/2019</label>
-                <br><br>
-                    <label><b><i class="fas fa-user"></i> Assigned To: </b> Freddy</label>
-                <br><br>
+                <br>
+                    <label><b><i class="fas fa-user"></i> Assigned To: </b></label>
+                <br>
                     <label><b><i class="fas fa-align-left"></i> Task Description: </b></label>
                       <div>
-                        {{selectedTitleDes.name}}
-                        <p>This is an exmaple description for the task named.</p>
+                        <p class="bordering">{{selectedDes}}</p>
                       </div>
-                 <br>
                     <label>Upload file <i class="fas fa-paperclip"></i></label>
                  <br><br>
                     <label><b><i class="far fa-comments"></i> Add a Comment</b></label>
-                    <textarea placeholder="Enter a Comment" cols="40" rows="4" ngModel required></textarea>
+                    <textarea placeholder="Enter a Comment" cols="40" rows="4"></textarea>
                 <br>
             </div>
         </div>

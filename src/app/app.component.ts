@@ -17,27 +17,30 @@ export class AppComponent implements OnInit {
    
    todoArrayNewFeatures=[]
    todoDesArrayNewFeatures=[]
+   
+   public showTimeline:boolean = true;
+   public showTask:boolean = false;
+   
+   deviceObjects = [{name: 'Issue'}, {name: 'New Feature'}, {name: 'Feature Fix'}];
+   selectedDeviceObj = this.deviceObjects[1];
 
     constructor(private appService: AppService) {} 
     
       ngOnInit() {
-        this.appService.acc();
       }
       
-   var cars = document.getElementById("cars");
-var carSelected = cars.options[cars.selectedIndex].value;
-
-getSelectedValue(){
-
-}
+      onChangeObj(newObj) {
+        this.selectedDeviceObj = newObj;
+      }
    
-   addTodo(value, des, type){
-       if(type == "Issues")
+   addTodo(value, des){
+        
+       if(this.selectedDeviceObj == this.deviceObjects[0])
        {
         this.todoArrayIssues.push(value)
         this.todoArrayIssues.push(des)
        }
-       else if(type == "Feature Fix")
+       else if(this.selectedDeviceObj == this.deviceObjects[1])
        {
         this.todoArrayFeatureFix.push(value)
         this.todoArrayFeatureFix.push(des)
@@ -46,6 +49,8 @@ getSelectedValue(){
         this.todoArrayNewFeatures.push(value)
         this.todoArrayNewFeatures.push(des)
        }
+       
+       this.appService.cls();
   }
   
   deleteItem(todo){
@@ -65,4 +70,15 @@ getSelectedValue(){
     }
    }
   }
+  
+   public toggleTask(): void { 
+     this.showTask = !this.showTask; 
+     this.showTimeline = false;
+   }
+   
+   public toggleTimeline(): void { 
+     this.showTimeline = !this.showTimeline;
+     this.showTask = false; 
+   }
+
 }

@@ -5,10 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { UploadModule } from './upload/upload.module';
+import { TaskViewComponent } from './task-view/task-view.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskViewComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
