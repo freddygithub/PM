@@ -45,8 +45,8 @@ function closeNav() {
 }
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav2() {
- document.getElementById("mySidenav2").style.width = "350px";
- document.getElementById("main2").style.marginLeft = "350px";
+ document.getElementById("mySidenav2").style.width = "400px";
+ document.getElementById("main2").style.marginLeft = "400px";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */

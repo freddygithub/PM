@@ -344,12 +344,13 @@ form .form-control:focus{
   position: fixed;
   z-index: 1;
   top: 0;
-  right: 10px;
+  right: -30px;
   background: white;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
   padding-left: 15px;
+  padding-right: 15px;
   text-decoration: none;
 }
 
@@ -377,6 +378,7 @@ form .form-control:focus{
 
 [type="date"] {
   background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+  padding: 5px 55px;
 }
 [type="date"]::-webkit-inner-spin-button {
   display: none;
@@ -392,4 +394,10 @@ form .form-control:focus{
   border-style: solid;
   border-width: 1px;
   padding: 5px 5px;
+  width: 90%;
+}
+.mdl{
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
 }

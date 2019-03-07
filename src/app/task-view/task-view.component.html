@@ -16,9 +16,11 @@
           <option [ngValue]="i" *ngFor="let i of deviceObjects">{{i.name}}</option>
         </select>
         <br><br>
+        <label><b>Due Date</b></label>
         <input #todoDate type="date" name="dateofbirth" id="dateofbirth">
         <br><br>
-      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value, todoDate.value)">Submit</button>
+      <button class="button" type="submit" (click)="addTodo(todo.value, todoDes.value, todoDate.value)"
+              onclick="document.getElementById('id01').style.display='none'" >Submit</button>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn button">Cancel</button>
       <br><br>
     </div>
@@ -51,19 +53,23 @@
 
 <section>
     <div class="container">
-        <div  id="mySidenav2" class="sidenav2">
+        <div  id="mySidenav2" class="sidenav2 mdl">
+            
             <div>
                 <h5 class="titleSideNav">{{selectedTitle}}</h5>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
             </div>
             <hr>
-            <div>
-                    <label><b><i class="fas fa-calendar-day"></i> Category: </b> {{selectedCat.name}}</label>
-                    <label><b><i class="fas fa-calendar-day"></i> Deadline: </b> {{selectedDate}}</label>
-                    <label><b><i class="far fa-clock"></i> Task Created: </b> 3/5/2019</label>
+                    <label><b><i class="fas fa-list-ul"></i> Category: </b> {{selectedCat.name}}</label> 
                 <br>
+                    <label><b><i class="fas fa-calendar-day"></i> Deadline: </b> {{selectedDate}}</label>
+                <br>
+                    <label><b><i class="far fa-clock"></i> Task Created: </b> 3/5/2019</label>
+                <br> 
+            <!--
                     <label><b><i class="fas fa-user"></i> Assigned To: </b></label>
                 <br>
+            -->
                     <label><b><i class="fas fa-align-left"></i> Task Description: </b></label>
                       <div>
                         <p class="bordering">{{selectedDes}}</p>
@@ -73,7 +79,6 @@
                     <label><b><i class="far fa-comments"></i> Add a Comment</b></label>
                     <textarea placeholder="Enter a Comment" cols="40" rows="4"></textarea>
                 <br>
-            </div>
         </div>
     </div>
 </section>
