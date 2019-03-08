@@ -1,3 +1,4 @@
+
 <div id="id01" class="modal">
   <form class="modal-content animate" action="">
     <div class="container">
@@ -27,21 +28,21 @@
 
 <div class="container1">
   <div class="form-group">
-           <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Task</button>
-           
-           <button class="button srt" onclick="sortList()">Sort <i class="fas fa-sort"></i></button>
+           <button class="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fas fa-plus"></i> Add Project</button>
+      
+                     <button class=" searchb button" type="submit"><i class="fa fa-search"></i></button>
+                     <input class="search" type="text" placeholder="Search..">
     </div>
 </div>
-
+<br>
 <div class="centerM">
           <div class="data">
-              <ul id="id02" class="w3-ul">
+              <ul id="id02" class="list-group">
                   <li class="w3-hover-grey" *ngFor="let todo of todoArray" onclick="openNav2()" (click)="selectedButton(todo)">
-                      <h6 id="cat">{{todo.cat.name}}</h6>
-                      {{todo.name}}: {{todo.date}}
-                      <br>
+                      <h6 id="cat">{{todo.name}}</h6>
                       {{todo.des}}
                       <br>
+                      <span class="badge">12</span>
                         <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()" (click)="selectedButton(todo)"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
                   </li>
               </ul>

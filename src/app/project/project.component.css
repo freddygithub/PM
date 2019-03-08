@@ -374,3 +374,20 @@ li:hover h6{
   background-color: grey;
   color:white;
 }
+.search{
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+    
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.searchb{
+  float: right;
+  margin-top: 8px;
+  margin-right: 16px;
+  padding-top: 5px
+}

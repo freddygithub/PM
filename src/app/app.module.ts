@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { UploadModule } from './upload/upload.module';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskViewComponent,
-    TimelineComponent
+    TimelineComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
