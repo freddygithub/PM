@@ -36,13 +36,19 @@
 <div class="centerM">
           <div class="data">
               <ul id="id02" class="w3-ul">
-                  <li class="w3-hover-grey" *ngFor="let todo of todoArray" onclick="openNav2()" (click)="selectedButton(todo)">
-                      <h6 id="cat">{{todo.cat.name}}</h6>
-                      {{todo.name}}: {{todo.date}}
-                      <br>
-                      {{todo.des}}
-                      <br>
-                        <i class="fa fa-info-circle padd" aria-hidden="true" onclick="openNav2()" (click)="selectedButton(todo)"></i><i (click)="deleteItem(todo)" class="fa fa-trash padd" aria-hidden="true"></i>
+                  <li class="w3-hover-grey" *ngFor="let todo of todoArray">
+                      <div class="taskButton">
+                          <button class="buttonTask" onclick="openNav2()" (click)="selectedButton(todo)"><i class="fa fa-info-circle padd" aria-hidden="true"></i></button>
+                          <div class="divider"></div>
+                          <button class="buttonTask" (click)="deleteItem(todo)"><i class="fa fa-trash padd" aria-hidden="true"></i></button>
+                      </div>
+                      <div>
+                          <h6 id="cat">{{todo.cat.name}}</h6>
+                          {{todo.name}}: {{todo.date}}
+                          <br>
+                          {{todo.des}}
+                          <br>
+                      </div>
                   </li>
               </ul>
           </div>
@@ -57,7 +63,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
             </div>
             <hr>
-                    <label><b><i class="fas fa-list-ul"></i> Category: </b> {{selectedCat.name}}</label> 
+                    <label><b><i class="fas fa-list-ul"></i> Category: </b> {{selectedCat}}</label> 
                 <br>
                     <label><b><i class="fas fa-calendar-day"></i> Deadline: </b> {{selectedDate}}</label>
                 <br>

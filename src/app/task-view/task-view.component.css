@@ -374,3 +374,22 @@ li:hover h6{
   background-color: grey;
   color:white;
 }
+li:nth-child(2) {
+
+}
+.buttonTask{
+    background-color: lightgrey;
+}
+.buttonTask:hover{
+    background-color: grey;
+}
+.taskButton{
+    display: inline-block;
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px
+}
+.divider{
+    width:5px;
+    display:inline-block;
+}
